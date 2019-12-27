@@ -1,12 +1,5 @@
-FROM elixir:1.9
+FROM elixir:1.9.4-alpine
+FROM postgres:12.1-alpine
 LABEL maintainer "serra@allgood.dev"
 
-RUN apt-get update
-RUN apt-get full-upgrade -y
-RUN apt-get install -y postgresql
-RUN pg_ctlcluster 11 main start
-
-RUN mix local.hex --force && mix local.rebar --force && mix hex.info
-
-RUN groupadd -r phoenix && useradd -r -s /bin/false -g phoenix phoenix
-USER phoenix
+CMD ["sh"]
